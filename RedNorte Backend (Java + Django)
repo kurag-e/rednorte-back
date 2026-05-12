@@ -1,0 +1,112 @@
+# RedNorte Backend (Java + Django)
+
+Repositorio de backends de RedNorte. Incluye microservicios Java (Spring Boot) y un servicio de identidad en Django.
+
+## Estructura
+
+- `rednorte-back/`
+  - `ms-gestion-clinica/` (Spring Boot, Java 21)
+  - `rednorte-api-gateway/` (Spring Cloud Gateway)
+  - `adminred/` (Spring Boot, estructura en `adminred/adminred/`)
+- `rednorte-back-Daniel/`
+  - `backend/` (Django + DRF + SimpleJWT)
+
+## Requisitos
+
+### Java
+- Java 21
+- Maven 3.9+
+- MySQL (XAMPP/phpMyAdmin recomendado)
+
+### Python
+- Python 3.x
+- Django
+- djangorestframework
+- djangorestframework-simplejwt
+
+## Puertos por defecto
+
+- API Gateway: `http://localhost:8080`
+- MS Gestion Clinica: `http://localhost:8082`
+- MS Administracion de Red: `http://localhost:8081`
+- Django Identity Service: `http://127.0.0.1:8000`
+
+## Configuracion de base de datos (MS Gestion Clinica)
+
+El microservicio usa MySQL con estos defaults:
+
+- URL: `jdbc:mysql://localhost:3306/rednorte_clinica`
+- Usuario: `root`
+- Password: vacio
+
+Puedes sobreescribir con variables de entorno:
+
+- `DB_URL`
+- `DB_USER`
+- `DB_PASSWORD`
+
+Inicializacion (XAMPP/phpMyAdmin):
+1. Inicia `Apache` y `MySQL` en XAMPP.
+2. Ejecuta `rednorte-back/ms-gestion-clinica/database/init.sql` en phpMyAdmin.
+
+## Como ejecutar
+
+### 1) MS Gestion Clinica (Spring Boot)
+
+Desde `rednorte-back/ms-gestion-clinica/`:
+
+```bash
+./mvnw spring-boot:run
+```
+
+En Windows PowerShell:
+
+```powershell
+.\mvnw.cmd spring-boot:run
+```
+
+Base: `http://localhost:8082/api/clinica`
+
+### 2) API Gateway
+
+Desde `rednorte-back/rednorte-api-gateway/`:
+
+```bash
+mvn spring-boot:run
+```
+
+Health check:
+
+```bash
+curl http://localhost:8080/actuator/health
+```
+
+El gateway valida JWT y reenvia headers:
+- `X-Authenticated-User`
+- `X-Authenticated-Role`
+
+### 3) Django Identity Service
+
+Desde `rednorte-back-Daniel/backend/`:
+
+```bash
+python manage.py migrate
+python manage.py runserver
+```
+
+Health check:
+
+- `GET http://127.0.0.1:8000/api/v1/health/`
+
+## Rutas del gateway
+
+El API Gateway enruta a:
+
+- `/api/centros/**` y `/api/especialidades/**` -> MS Administracion de Red (8081)
+- `/api/clinica/**` -> MS Gestion Clinica (8082)
+- `/api/v1/**` -> Django Identity Service (8000)
+
+## Notas
+
+- El servicio Django usa SQLite local por defecto (`db.sqlite3`).
+- Para entornos productivos, define secretos y credenciales por variables de entorno.
