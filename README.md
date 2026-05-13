@@ -44,7 +44,7 @@ En Windows PowerShell:
 
 ## Endpoints principales
 
-Base: `http://localhost:8081/api/clinica`
+Base: `http://localhost:8082/api/clinica`
 
 - `POST /lista-espera` registrar paciente en espera.
 - `GET /lista-espera` listar pacientes.
