@@ -1,6 +1,0 @@
-C:\Users\fvale\OneDrive\Escritorio\rednorte-api-gateway-base\rednorte-api-gateway\src\main\java\com\rednorte\apigateway\ApiGatewayApplication.java
-C:\Users\fvale\OneDrive\Escritorio\rednorte-api-gateway-base\rednorte-api-gateway\src\main\java\com\rednorte\apigateway\config\CorsConfig.java
-C:\Users\fvale\OneDrive\Escritorio\rednorte-api-gateway-base\rednorte-api-gateway\src\main\java\com\rednorte\apigateway\config\SecurityConfig.java
-C:\Users\fvale\OneDrive\Escritorio\rednorte-api-gateway-base\rednorte-api-gateway\src\main\java\com\rednorte\apigateway\controller\AuthController.java
-C:\Users\fvale\OneDrive\Escritorio\rednorte-api-gateway-base\rednorte-api-gateway\src\main\java\com\rednorte\apigateway\filter\JwtAuthenticationFilter.java
-C:\Users\fvale\OneDrive\Escritorio\rednorte-api-gateway-base\rednorte-api-gateway\src\main\java\com\rednorte\apigateway\security\JwtService.java

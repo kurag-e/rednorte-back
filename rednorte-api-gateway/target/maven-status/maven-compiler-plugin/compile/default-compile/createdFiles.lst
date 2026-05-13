@@ -1,7 +1,0 @@
-com\rednorte\apigateway\controller\AuthController$LoginRequest.class
-com\rednorte\apigateway\config\SecurityConfig.class
-com\rednorte\apigateway\filter\JwtAuthenticationFilter.class
-com\rednorte\apigateway\controller\AuthController.class
-com\rednorte\apigateway\security\JwtService.class
-com\rednorte\apigateway\ApiGatewayApplication.class
-com\rednorte\apigateway\config\CorsConfig.class
